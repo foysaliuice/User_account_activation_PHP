@@ -4,9 +4,7 @@
 	include_once ($filepath.'/../helpers/Format.php');
  ?>
 <?php 
-/**
-* 
-*/
+
 class MemberRegi{
 	private $db;
 	private $fm;
