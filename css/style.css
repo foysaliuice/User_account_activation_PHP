@@ -426,6 +426,75 @@ body {
 .card.alt .button-container button:active:before, .card.alt .button-container button:focus:before {
   display: none;
 }
+/*For link button*/
+.button {
+  width: 100%;
+  background: #ffffff;
+  border-color: #ffffff;
+  text-decoration: none;
+}
+.button span {
+  color: #ed2553;
+}
+.button:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+.button:active:before, .button:focus:before {
+  display: none;
+}
+.button {
+  outline: 0;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: 0;
+  width: 240px;
+  border: 2px solid #e3e3e3;
+  padding: 20px 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  overflow: hidden;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+.button span {
+  position: relative;
+  z-index: 1;
+  color: #ddd;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+.button:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  background: #ed2553;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin: -15px 0 0 -15px;
+  opacity: 0;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+.button:hover, .button:active, .button:focus {
+  border-color: #ed2553;
+}
+.button:hover span, .button:active span, .button:focus span {
+  color: #ed2553;
+}
+.button:active span, .button:focus span {
+  color: #ffffff;
+}
+.button:active:before, .button:focus:before {
+  opacity: 1;
+  -webkit-transform: scale(10);
+  transform: scale(10);
+}
 
 /* Keyframes */
 @-webkit-keyframes buttonFadeInUp {
