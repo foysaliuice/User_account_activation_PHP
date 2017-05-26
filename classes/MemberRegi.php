@@ -42,12 +42,26 @@ class MemberRegi{
 	    }else{
 
 	    	//Send activation email
-	    	$to = $email;
-	    	$subject = "Activate your account";
-	    	$header = "From: foysal@info.com";
-	    	$body = "Hello";
+	    	$to = 'chinmoymondal791@gmail.com';
+			$subject = "Password reset security code";
 
-	    	if (mail($to, $subject, $body,$header)) {
+			$message = "
+				<html>
+					<head>
+						<title>Account activation link</title>
+					</head>
+					<body>
+						<p>Click the link for active your account.</p>
+						<p>http://localhost/member/User_account_activation_PHP/email_activation.php?$email&code=$confirmCode</p>
+					</body>
+				</html>
+			";
+
+			// Always set content-type when sending HTML email
+			$headers = "MIME-Version: 1.0" . "\r\n";
+			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+	    	if (mail($to, $subject, $message,$header)) {
 	    		$query = "INSERT INTO tbl_member VALUES('','$name','$email','$g_password','0','$confirmCode')";
 	    		$insert_member = $this->db->insert($query);
 	    		if ($insert_member) {
