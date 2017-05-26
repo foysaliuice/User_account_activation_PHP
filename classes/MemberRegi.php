@@ -30,7 +30,6 @@ class MemberRegi{
 	public function MemberRegistration($name, $email){
 		$name 	= $this->fm->validation($name);
 		$email 	= $this->fm->validation($email);
-
 		$name 	= mysqli_real_escape_string($this->db->link, $name);
 		$email 	= mysqli_real_escape_string($this->db->link, $email);
 
@@ -41,23 +40,24 @@ class MemberRegi{
 	    	$msg = "<span class='error'>Fields must not be empty.</span>";
                 return $msg;
 	    }else{
-	    	$query = "INSERT INTO tbl_member VALUES('','$name','$email','$g_password','0','$confirmCode')";
 
-	    	$message = 
-	    	"
-	    	Confirm Your email
-	    	Click the link below to verify your account
-	    	http://www.
-	    	";
+	    	//Send activation email
+	    	$to = $email;
+	    	$subject = "Activate your account";
+	    	$header = "From: foysal@info.com";
+	    	$body = "Hello";
 
-            $insert_member = $this->db->insert($query);
-            if ($insert_member) {
+	    	if (mail($to, $subject, $body,$header)) {
+	    		$query = "INSERT INTO tbl_member VALUES('','$name','$email','$g_password','0','$confirmCode')";
+	    		$insert_member = $this->db->insert($query);
+	    		if ($insert_member) {
                	echo "<script>location.replace('activation.php');</script>";
             }else{
                 $msg = "<span class='error'>Member not inserted.</span>";
                 return $msg;
             }
-	    }
+	    	}
+	    	}
 	}
 
 }
