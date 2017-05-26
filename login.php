@@ -1,42 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Member Portal</title>
-
-    <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-info">
-          <div class="panel-heading">Member Login</div>
-          <div class="panel-body">
-            <form action="" method="POST">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <button type="submit" class="btn btn-info">Submit</button>
-            </form>
-          </div>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Member Login</title>
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card"></div>
+    <div class="card">
+      <h1 class="title">Member Login</h1>
+      <form action="" method="POST">
+        <div class="input-container">
+          <input type="email" name="email" required="required"/>
+          <label>Email ID</label>
+          <div class="bar"></div>
         </div>
+        <div class="input-container">
+          <input type="password" name="password" required="required"/>
+          <label>Password</label>
+          <div class="bar"></div>
         </div>
-      </div>
+        <div class="button-container">
+          <button><span>Login</span></button>
+        </div>
+        <div class="footer"><a href="#">Forgot your password?</a></div>
+      </form>
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-  </body>
+  </div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="js/index.js"></script>
+</body>
 </html>
