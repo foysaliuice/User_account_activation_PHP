@@ -1,7 +1,5 @@
 <?php
 	$filepath = realpath(dirname(__FILE__));
-	include ($filepath.'/../lib/Session.php');
-	Session::checkLogin();
 	include_once ($filepath.'/../lib/Database.php');
 	include_once ($filepath.'/../helpers/Format.php');
 ?>
@@ -23,29 +21,27 @@ class MemberLogin{
 		$email 		= $this->fm->validation($data['email']);
 		$password 	= $this->fm->validation($data['password']);
 
-		$email 		= mysqli_real_escape_string($this->db->link, $data['email']);
-		$password 	= mysqli_real_escape_string($this->db->link, md5($data['password']));
-
 		if (empty($email) || empty($password)) {
 			$msg = "<span class='error'>Fields must not be empty.</span>";
             return $msg;
-		}
+		}else{
 
-		$query = "SELECT * FROM tbl_customer WHERE email='$email' AND password='$password'";
+		$query = "SELECT * FROM tbl_member WHERE email='$email' AND password='$password'";
+		echo $query;
 		$result = $this->db->select($query);
 
 		if ($result !=false) {
 			$value = $result->fetch_assoc();
-			Session::set("custLogin", true);
-			Session::set("cmrId", $value['id']);
-			Session::set("custId", $value['name']);
-			Session::set("custemail", $value['email']);
-			Session::set("custCountry", $value['country']);
-			echo "<script>location.replace('cart.php');</script>";
+			Session::set("memberLogin", true);
+			Session::set("m_Id", $value['id']);
+			Session::set("m_name", $value['name']);
+			Session::set("m_email", $value['email']);
+			echo "<script>location.replace('dashboard.php');</script>";
 		}else{
 			$msg = "<span class='error'>Email or Password not matched !</span>";
             return $msg;
 		}
+	}
 	}
 }
  ?>
