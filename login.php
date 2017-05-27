@@ -1,3 +1,9 @@
+<!-- <?php include '../classes/Adminlogin.php'; ?>
+<?php
+    if ($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login'])) {
+        $custLogin = $cmr->customerLogin($_POST);
+    }
+ ?> -->
 <!DOCTYPE html>
 <html >
 <head>
@@ -29,8 +35,4 @@
         <div class="footer"><a href="#">Forgot your password?</a></div>
       </form>
     </div>
-  </div>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script src="js/index.js"></script>
-</body>
-</html>
+<?php include('inc/footer.php');?>
