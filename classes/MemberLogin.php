@@ -9,7 +9,7 @@
 /**
 * Member Registration Class
 */
-class MemberRegistration{
+class MemberLogin{
 	private $db;
 	private $fm;
 	
@@ -19,31 +19,32 @@ class MemberRegistration{
 		$this->fm = new Format();
 	}
 
-	public function adminLogin($adminUser,$adminPass){
-		$adminUser = $this->fm->validation($adminUser);
-		$adminPass = $this->fm->validation($adminPass);
+	public function memberLogin($data){
+		$email 		= $this->fm->validation($data['email']);
+		$password 	= $this->fm->validation($data['password']);
 
-		$adminUser =mysqli_real_escape_string($this->db->link, $adminUser);
-		$adminPass =mysqli_real_escape_string($this->db->link, $adminPass);
+		$email 		= mysqli_real_escape_string($this->db->link, $data['email']);
+		$password 	= mysqli_real_escape_string($this->db->link, md5($data['password']));
 
-		if (empty($adminUser) || empty($adminPass)) {
-			$loginMsg = "Field must not be empty";
-			return $loginMsg;
+		if (empty($email) || empty($password)) {
+			$msg = "<span class='error'>Fields must not be empty.</span>";
+            return $msg;
+		}
+
+		$query = "SELECT * FROM tbl_customer WHERE email='$email' AND password='$password'";
+		$result = $this->db->select($query);
+
+		if ($result !=false) {
+			$value = $result->fetch_assoc();
+			Session::set("custLogin", true);
+			Session::set("cmrId", $value['id']);
+			Session::set("custId", $value['name']);
+			Session::set("custemail", $value['email']);
+			Session::set("custCountry", $value['country']);
+			echo "<script>location.replace('cart.php');</script>";
 		}else{
-			$query = "SELECT * FROM tbl_admin WHERE adminUser = '$adminUser' AND adminPass = '$adminPass'";
-			$result = $this->db->select($query);
-
-			if ($result != false) {
-				$value = $result->fetch_assoc();
-				Session::set("adminlogin", true);
-				Session::set("adminId", $value['adminId']);
-				Session::set("adminUser", $value['adminUser']);
-				Session::set("adminName", $value['adminName']);
-				header("Location:dashboard.php");
-			}else{
-				$loginMsg = "Username or Password not match !";
-				return $loginMsg;
-			}
+			$msg = "<span class='error'>Email or Password not matched !</span>";
+            return $msg;
 		}
 	}
 }
