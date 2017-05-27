@@ -6,6 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.logout{
+  float: right;
+    margin-top: -50px;
+    margin-right: 15px;
+}
 .footer-cl{
   text-align: center;
 }
