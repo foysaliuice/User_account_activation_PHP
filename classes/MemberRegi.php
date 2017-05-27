@@ -52,7 +52,7 @@ class MemberRegi{
 					</head>
 					<body>
 						<p>Click the link for active your account.</p>
-						<p>http://localhost/member/User_account_activation_PHP/email_activation.php?$email&code=$confirmCode</p>
+						<p>http://localhost/member/User_account_activation_PHP/email_activation.php?email=$email&code=$confirmCode</p>
 					</body>
 				</html>
 			";
@@ -74,6 +74,26 @@ class MemberRegi{
 	    	}
 	}
 
+	public function EmailActivation($email, $code){
+		$db_code="";
+		$query = "select * from tbl_member where email='$email'";
+		$result = $this->db->select($query);
+
+		if ($result !=false) {
+			$value = $result->fetch_assoc();
+			$db_code = $value['code'];
+
+			if ($code == $db_code) {
+			$update = "update tbl_member set activate='1', code='0' where email='$email'";
+			$result = $this->db->update($update);
+			$msg = "Account activated";
+			return $msg;
+			}else{
+			$msg = "<span class='error'>Email or code not match<br><br></span>";
+			return $msg;
+		}
+		}
+	}
 }
 
  ?>
