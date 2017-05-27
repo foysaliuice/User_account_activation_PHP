@@ -1,5 +1,4 @@
-<?php include 'classes/MemberRegi.php'; ?>
-
+<?php include('inc/header.php');?>
 <?php
   $member_regi = new MemberRegi();
 
@@ -10,19 +9,7 @@
     $insert_member = $member_regi->MemberRegistration($name, $email);
   }
 ?>
-<!DOCTYPE html>
-<html >
-<head>
-  <meta charset="UTF-8">
-  <title>Member Registration</title>
-  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
-  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div class="container">
-    <div class="card"></div>
-    <div class="card">
+
       <h1 class="title">Member Registration</h1>
       <form action="" method="POST">
         <div class="input-container">
