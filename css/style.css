@@ -6,7 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.footer-cl{
+  text-align: center;
+}
 /* Pen Title */
 .pen-title {
   padding: 50px 0;
@@ -92,7 +94,7 @@ body {
   position: relative;
   max-width: 460px;
   width: 100%;
-  margin: 0 auto 100px;
+  margin: 0 auto 10px;
 }
 .container.active .card:first-child {
   background: #f2f2f2;
@@ -508,4 +510,7 @@ body {
     bottom: 30px;
     opacity: 0;
   }
+}
+.error{
+  color: #f00;
 }
