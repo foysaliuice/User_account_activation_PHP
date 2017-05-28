@@ -42,8 +42,8 @@ class MemberRegi{
 	    }else{
 
 	    	//Send activation email
-	    	$to = 'chinmoymondal791@gmail.com';
-			$subject = "Password reset security code";
+	    	$to = 'webtutor24hrs@gmail.com';
+			$subject = "Account Activation Email";
 
 			$message = "
 				<html>
@@ -51,7 +51,9 @@ class MemberRegi{
 						<title>Account activation link</title>
 					</head>
 					<body>
-						<p>Click the link for active your account.</p>
+						<p>Your login ID: $email</p>
+						<p>Your login password: $g_password</p>
+						<p>Click the link to activate your account.</p>
 						<p>http://localhost/member/User_account_activation_PHP/email_activation.php?email=$email&code=$confirmCode</p>
 					</body>
 				</html>
@@ -61,15 +63,26 @@ class MemberRegi{
 			$headers = "MIME-Version: 1.0" . "\r\n";
 			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-	    	if (mail($to, $subject, $message,$header)) {
-	    		$query = "INSERT INTO tbl_member VALUES('','$name','$email','$g_password','0','$confirmCode')";
-	    		$insert_member = $this->db->insert($query);
-	    		if ($insert_member) {
-               	echo "<script>location.replace('activation.php');</script>";
-            }else{
-                $msg = "<span class='error'>Member not inserted.</span>";
-                return $msg;
-            }
+	    	if (mail($to, $subject, $message,$headers)) {
+	    		$mailquery = "SELECT * FROM tbl_member WHERE email='$email' LIMIT 1";
+	    		$mailchk = $this->db->select($mailquery);
+
+	    			if ($mailchk != false) {
+	    				$msg = "<span class='error'>Email already registered.</span>";
+                		return $msg;
+	    			}else{
+	    				$query = "INSERT INTO tbl_member VALUES('','$name','$email','$g_password','0','$confirmCode')";
+			    		$insert_member = $this->db->insert($query);
+			    		if ($insert_member) {
+		               
+		               		$msg="Your registration successful. Please check <b>'$email'</b> for activate your account.";
+		               		return $msg;
+		            }else{
+		                $msg = "<span class='error'>Member not inserted.</span>";
+		                return $msg;
+		            }
+	    			}
+	    		
 	    	}
 	    	}
 	}
