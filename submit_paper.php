@@ -10,13 +10,24 @@
     Session::destroy();
   }
 ?>
-<a class="logout" href="?cid=<?php Session::get('m_Id'); ?>">Logout</a>
+<?php
+  $submit_paper = new Paper(); 
+  if ($_SERVER['REQUEST_METHOD']=='POST') {
+        $save_paper = $submit_paper->SavePaper($_FILES);
+    }
+?>
+<a class="logout" href="?cid=<?php Session::get('m_Id'); ?>"><?php echo Session::get('m_name');?> (Logout)</a>
   <p class="title">Submit</p> 
-  <form>
+  <form action="" method="POST" enctype="multipart/form-data">
     <div class="input-container">
     <input type="file" name="att" required="required"/>
     <div class="button-container">
-    <button name="login"><span>Submit</span></button>
+    <?php
+      if (isset($save_paper)) {
+        echo $save_paper;
+      }
+    ?>
+    <button name="submit"><span>Submit</span></button>
   </div>
   </div>
   </form>
