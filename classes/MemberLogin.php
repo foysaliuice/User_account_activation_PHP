@@ -27,8 +27,9 @@ class MemberLogin{
 		}else{
 
 		$query = "SELECT * FROM tbl_member WHERE email='$email' AND password='$password'";
-		echo $query;
 		$result = $this->db->select($query);
+
+
 
 		if ($result !=false) {
 			$value = $result->fetch_assoc();
@@ -36,7 +37,17 @@ class MemberLogin{
 			Session::set("m_Id", $value['id']);
 			Session::set("m_name", $value['name']);
 			Session::set("m_email", $value['email']);
-			echo "<script>location.replace('dashboard.php');</script>";
+			Session::set("m_activate", $value['activate']);
+
+			$db_activate = $value['activate'];
+
+			if ($db_activate == 1) {
+				echo "<script>location.replace('dashboard.php');</script>";
+			}else{
+				$msg = "<span class='error'>Your account not activated.</span>";
+            	return $msg;
+			}
+			
 		}else{
 			$msg = "<span class='error'>Email or Password not matched !</span>";
             return $msg;
