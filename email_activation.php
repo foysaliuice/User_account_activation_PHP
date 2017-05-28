@@ -1,3 +1,4 @@
+<?php $title = "Email activation";?>
 <?php include('inc/header.php');?>
 <?php
 	$member_regi = new MemberRegi();
@@ -7,6 +8,7 @@
 	$Update = $member_regi->EmailActivation($email, $code);
 
 ?>
+<div class="card">
       <h1 class="title">Activated</h1>
       <div class="button-container">
       <?php

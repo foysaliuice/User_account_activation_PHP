@@ -1,3 +1,4 @@
+<?php $title = "Member registration";?>
 <?php include('inc/header.php');?>
 <?php
   $member_regi = new MemberRegi();
@@ -10,6 +11,7 @@
   }
 ?>
 
+<div class="card">
       <h1 class="title">Member Registration</h1>
       <form action="registration.php" method="POST">
         <div class="input-container">

@@ -1,3 +1,4 @@
+<?php $title = "Submit paper";?>
 <?php include("inc/header.php"); ?>
 <?php
  $login = Session::get("memberLogin");
@@ -16,7 +17,15 @@
         $save_paper = $submit_paper->SavePaper($_FILES);
     }
 ?>
-<a class="logout" href="?cid=<?php Session::get('m_Id'); ?>"><?php echo Session::get('m_name');?> (Logout)</a>
+<div class="dropdown" style="float:right;">
+  <button class="dropbtn"><?php echo Session::get('m_name');?></button>
+  <div class="dropdown-content">
+    <a href="#">Submit Paper</a>
+    <a href="#">Change password</a>
+    <a href="?cid=<?php Session::get('m_Id'); ?>">Logout</a>
+  </div>
+</div>
+<div class="card">
   <p class="title">Submit</p> 
   <form action="" method="POST" enctype="multipart/form-data">
     <div class="input-container">

@@ -1,3 +1,4 @@
+<?php $title = "Dashboard";?>
 <?php include("inc/header.php"); ?>
 <?php
  $login = Session::get("memberLogin");
@@ -10,7 +11,15 @@
     Session::destroy();
   }
 ?>
-<a class="logout" href="?cid=<?php Session::get('m_Id'); ?>"><?php echo Session::get('m_name');?> (Logout)</a>
+<div class="dropdown" style="float:right;">
+  <button class="dropbtn"><?php echo Session::get('m_name');?></button>
+  <div class="dropdown-content">
+    <a href="#">Submit Paper</a>
+    <a href="#">Change password</a>
+    <a href="?cid=<?php Session::get('m_Id'); ?>">Logout</a>
+  </div>
+</div>
+<div class="card">
   <p class="title">Welcome</p> 
   <div class="button-container">
     <a href="submit_paper.php" class="button"><span>Submit paper</span></a>

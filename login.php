@@ -1,3 +1,4 @@
+<?php $title = "Member login";?>
 <?php include('inc/header.php');?>
 <?php
     if ($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['login'])) {
@@ -10,8 +11,10 @@
  if ($login==true && $db_activate==1) {
   echo "<script>location.replace('dashboard.php');</script>";
  }
+
 ?>
-  
+
+<div class="card">
       <h1 class="title">Member Login</h1>
       <form action="" method="POST">
         <div class="input-container">
