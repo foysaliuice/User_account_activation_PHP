@@ -10,8 +10,8 @@
     Session::destroy();
   }
 ?>
-<a class="logout" href="?cid=<?php Session::get('m_Id'); ?>">Logout</a>
-  <p class="title">Welcome <?php echo Session::get('m_name');?></p> 
+<a class="logout" href="?cid=<?php Session::get('m_Id'); ?>"><?php echo Session::get('m_name');?> (Logout)</a>
+  <p class="title">Welcome</p> 
   <div class="button-container">
     <a href="submit_paper.php" class="button"><span>Submit paper</span></a>
   </div>
