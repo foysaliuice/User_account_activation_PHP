@@ -20,7 +20,15 @@ header("Cache-Control: max-age=2592000");
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Member Portal</title>
+  <title>
+  	<?php
+  		if (isset($title)) {
+  			echo $title;
+  		}else{
+  			echo "Member portal";
+  		}
+  	?>
+  </title>
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
   <link rel="stylesheet" href="css/style.css">
@@ -28,4 +36,4 @@ header("Cache-Control: max-age=2592000");
 <body>
   <div class="container">
     <div class="card"></div>
-    <div class="card">
+    
