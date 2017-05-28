@@ -11,7 +11,7 @@
 ?>
 
       <h1 class="title">Member Registration</h1>
-      <form action="" method="POST">
+      <form action="registration.php" method="POST">
         <div class="input-container">
           <input type="text" name="name" required="required"/>
           <label>Member name</label>
@@ -23,8 +23,14 @@
           <div class="bar"></div>
         </div>
         <div class="button-container">
+        <?php
+          if (isset($insert_member)) {
+            echo $insert_member;
+          }
+        ?>
           <button><span>Register</span></button>
         </div>
+        
         <div class="footer"><a href="login.php">Already register? Login</a></div>
       </form>
     </div>
