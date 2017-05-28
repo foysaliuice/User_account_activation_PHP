@@ -5,7 +5,7 @@
 ?>
 <?php 
 /**
-* Member Registration Class
+* Member Login Class
 */
 class MemberLogin{
 	private $db;
@@ -52,7 +52,7 @@ class MemberLogin{
 			$msg = "<span class='error'>Email or Password not matched !</span>";
             return $msg;
 		}
-	}
+		}
 	}
 }
  ?>
