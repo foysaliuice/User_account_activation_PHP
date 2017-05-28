@@ -6,7 +6,8 @@
  ?>
  <?php
  $login = Session::get("memberLogin");
- if ($login==true) {
+ $db_activate = Session::get("m_activate");
+ if ($login==true && $db_activate==1) {
   echo "<script>location.replace('dashboard.php');</script>";
  }
 ?>
