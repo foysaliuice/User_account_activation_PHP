@@ -1,5 +1,4 @@
 <?php include('inc/header.php');?>
-<?php include 'classes/MemberRegi.php'; ?>
 <?php
 	$member_regi = new MemberRegi();
 	$email = $_GET['email'];
