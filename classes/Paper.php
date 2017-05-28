@@ -15,7 +15,7 @@ class Paper{
 	}
 
 	public function SavePaper($file){
-		$permited  		= array('jpg', 'jpeg', 'png', 'gif','pdf');
+		$permited  		= array('jpg', 'jpeg', 'png', 'gif','pdf','doc','docx','ppt','pptx');
 	    $file_name 		= $file['att']['name'];
 	    $file_size 		= $file['att']['size'];
 	    $file_temp 		= $file['att']['tmp_name'];
